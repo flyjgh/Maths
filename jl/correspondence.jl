@@ -1,5 +1,5 @@
 # Types    ≣ proposition
-# programs ≣ proofs
+# function ≣ proofs
 # eval     ≣ simplification
 
 # empty Type

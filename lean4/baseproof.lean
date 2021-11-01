@@ -2,15 +2,15 @@ universe u
 
 variable (α β γ : Prop)
 
+-- example : (α -> β) -> α -> β := by
+    -- intro h₁
+    -- exact h₁
+
 theorem modus_ponens : α -> (α -> β) -> β := by
     intro h₁
     intro h₂
     apply h₂
     exact h₁
-
--- example : (α -> β) -> α -> β := by
-    -- intro h₁
-    -- exact h₁
 
 theorem const : α -> β -> α := by
     intros h₁ h₂

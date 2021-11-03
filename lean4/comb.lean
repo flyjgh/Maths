@@ -2,9 +2,9 @@ universe u
 
 variable (X : Type)
 
-def I (x : X) := x
+def I : X -> X := λ x => x
 
-def K (x y : X) := id x
+def K  : X -> X -> X := λ x y => id x
 
 def S (x : X -> X -> X) (y : X -> X) (z : X)  := (x z) (y z)
 

@@ -1,31 +1,110 @@
-I(x) = x
+# ----------------------------------------------------------------
+# identity
+I = x -> x
 
-K(x,y) = x
+# Mockingbird
+# self-application
+M = ƒ -> ƒ(ƒ)
+M(I)(1)
 
-S(x,y,z) = x(z)(y(z))
+# Loop
+# Base Recursion
+L = (x -> x(x))(x -> x(x))
+L = M(M)
 
-ι(x) = x(SK)
+# Y Combinator
+# Recursive Combinator
+Y = ƒ -> (x -> ƒ(x)(x))(x -> ƒ(x)(x))
 
-struct Zero
-    n::Int
-end
+# Kestrel
+# true
+K = x -> y -> x
 
-struct Succ
-    n::Function
-end
-struct ℕ
-    n::Union{Zero,Succ}
-end
+# Kite
+# false
+KI = x -> y -> y
+# == K(I) == C(K)
 
-struct Monoid{T}
-    ×
-    id
-end
+KI(5)(6)
+KI(K)(KI)(5)(6)
 
-Monoid{ℕ}(Succ(Zero), Zero)
+# Cardinal
+C = ƒ -> x -> y -> ƒ(y)(x)
 
-# dependent dispatch
-f(x) = x^3
-f(::Val{:2}) = 8
-@code_typed f(Val(2))
+# Not
+N = b -> b(KI)(K)
+N = b -> C(b)(K)(KI)
+N(K)(1)(0)
+N(K)(K)(KI)(1)(0)
+
+# And
+∧ = x -> y -> x(y)(x)
+∧(K)(K)(1)(0)
+
+# Or
+∨ = x -> y -> x(x)(y)
+∨(KI)(KI)(1)(0)
+
+# Equality
+t = x -> y -> x(y)(N(y))
+t(KI)(KI)(1)(0)
+
+# XOR
+XOR = x -> y -> x(N(y))(y)
+XOR(KI)(K)(1)(0)
+
+S = x -> y -> z -> x(z)(y(z))
+S(K)(K)(6)
+
+ι = x -> x(S)(K)
+
+# ----------------------------------------------------------------
+# Kestrel variant
+K = (x,y) -> x
+# == true
+
+# Kite variant
+KI = (x,y) -> y
+# == I ⇀ K == ⤏(K,I) == KI
+# == K ⇀ C == ⤏(C,K) == CK
+# == false
+(5 ⇀ KI)(6)
+⤏(KI,5)(6)
+KI(K,KI)(5,6)
+
+# Loop
+# Base Recursion
+L = (x -> x(x))(x -> x(x))
+L = M(M)
+
+# Y Combinator
+# Recursive Combinator
+Y = ƒ -> (x -> ƒ(x(x)))(x -> ƒ(x(x)))
+
+# Not
+N = b -> b(KI,K)
+N = b -> C(b,K,KI)
+N(K)(1,0)
+N(K)(K,KI)(1,0)
+
+# And
+∧ = (x,y) -> x(y,x)
+(K ∧ K)(1,0)
+
+# Or
+∨ = (x,y) -> x(x,y)
+(KI ∨ KI)(1,0)
+
+# Equality
+t = (x,y) -> x(y,N(y))
+t(KI,KI)(1,0)
+
+# XOR
+XOR = (x,y) -> x(N(y), y)
+XOR(KI,K)(1,0)
+
+# Cardinal
+C = (ƒ,x,y) -> ƒ(y,x)
+# ----------------------------------------------------------------
+
 

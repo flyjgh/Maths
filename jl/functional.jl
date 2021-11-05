@@ -57,20 +57,6 @@ end
 h(2)(3)(5)
 h(2,3)(4)
 
-using BenchmarkTools
-j(a,b,c) = a .* b ./ c .* .√(2) .^2
-@⇀ d(a,b,c) = a .* b ./ c .* .√(2) .^2
-a = randn(Float32, 100,100,100)
-b = randn(Float32, 100,100,100)
-c = randn(Float32, 100,100,100)
-@benchmark j(a,b,c)
-@benchmark d(a,b,c)
-@benchmark d(a,b)(c)
-@benchmark d(a)(b)(c)
-@benchmark (a ⇀ j)(b,c)
-@benchmark (a ⇀ b ⇀ j)(c)
-@benchmark (a ⇀ b ⇀ c ⇀ j)()
-
 # ----------------------------------------------------------------
 
 struct Fun

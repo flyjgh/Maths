@@ -48,9 +48,10 @@ section natural
     postfix:80 "²" => SQ
 
 
+    #check  SSZ ^
+    #check  ^ SSZ
     #check  SSZ ^ SSZ
-    #check  SSSZ ^
-    #check  ^ SSSZ
+
     #check  T (SZ²)
     #check  (SZ² * ·)
     #check (SQ ∘ P SSZ)

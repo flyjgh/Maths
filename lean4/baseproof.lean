@@ -40,3 +40,4 @@ variable (x : X) (y : Y)
 
 #check (X × Y) × (Y × X)
 #check ((x, y), (y, x)).1.2
+#check modus_ponens

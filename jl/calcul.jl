@@ -20,3 +20,6 @@ Monoid{ℕ}(Succ(Zero), Zero)
 f(x) = x^3
 f(::Val{:2}) = 8
 @code_typed f(Val(2))
+
+f = x -> y -> x
+f(2)(3)

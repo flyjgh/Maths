@@ -41,7 +41,7 @@ Not = α -> (α)(ff)(tt)
 ∧   = α -> β -> (α)(β)(α)
 ∨   = α -> β -> (α)(α)(β)
 XOR = α -> β -> (α)((N)(β))(β)
-testbool(ƒ) = ƒ(1)(0)
+testbool = ƒ -> (ƒ)(true)(false)
 
 # if P then Q else R
 -< = P -> Q -> R -> (P)(Q)(R)

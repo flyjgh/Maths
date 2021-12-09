@@ -1,5 +1,3 @@
-# Formalism
+# Maths
 
-## really not formal, but fun
-
-Having fun with theorem proving, proof checking, and the Curry-Howard correspondence in general.
+Having fun with theorem proving, proof checking, combinators, categories, λ, and the Curry-Howard correspondence in general.

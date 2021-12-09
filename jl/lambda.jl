@@ -11,7 +11,8 @@ KI = (K)(I)  # (S)(K)
 Y = ƒ -> (α -> (ƒ)(α)(α))(α -> (ƒ)(α)(α))
 
 var = α -> β -> (β)(α)
-B   = γ -> g -> α -> (γ)((g)(α))  # composition
+B   = f -> g -> α -> (f)((g)(α))  # composition
+B   = f -> g -> (f ∘ g)
 
 # if P then Q else R == (P)(Q)(R)
 
@@ -19,7 +20,7 @@ B   = γ -> g -> α -> (γ)((g)(α))  # composition
 
 Zero = (K)(I)
 Succ = n -> γ -> α -> (γ)((n)(γ)(α))
-Succ = n -> γ -> (B)(γ)((n)(γ))
+Succ = n -> γ -> (γ) ∘ n(γ)
 
 one   = (Succ)(Zero)
 two   = (Succ)(one)
@@ -37,14 +38,13 @@ POW = α -> β -> (β)(α)
 tt  = (K)
 ff  = (K)(I)
 eq  = α -> β -> (α)(β)((N)(β))
-Not = α -> (α)(ff)(tt)
+N   = α -> (α)(ff)(tt)
 ∧   = α -> β -> (α)(β)(α)
 ∨   = α -> β -> (α)(α)(β)
 XOR = α -> β -> (α)((N)(β))(β)
 testbool = ƒ -> (ƒ)(true)(false)
 
-# if P then Q else R
--< = P -> Q -> R -> (P)(Q)(R)
+# if P then Q else R === P -> Q -> R -> (P)(Q)(R)
 
 # ----------------------------------------------------------------
 

@@ -10,3 +10,13 @@ function mk(x)
 end
 
 (() -> () -> () -> ())()
+
+
+
+
+using MuKanren
+
+equals(:x,3)
+equals(3,3)
+
+@run(1, (q), equals(x,5))

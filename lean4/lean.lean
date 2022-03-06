@@ -25,6 +25,12 @@ section natural
         | _, ℕ.Z     => (ℕ.S ℕ.Z)
         | k, ℕ.S l   => T k (PW k l)
 
+    inductive Llist : Type
+        | nil  : Llist
+        | cons : (Llist × Llist) -> Llist
+
+    
+    def repeat (α : ℕ) : Vec α := take α (repeat α)
 
     def T2 : ℕ -> ℕ := T (ℕ.S (ℕ.S ℕ.Z))
     -- ==
@@ -53,6 +59,7 @@ section natural
     #check  SSZ ^ SSZ
 
     #check  T (SZ²)
+    #check  P SZ P SZ
     #check  (SZ² * ·)
     #check (SQ ∘ P SSZ)
     #reduce SSZ ^ SSSZ
@@ -105,8 +112,10 @@ section prop
     #reduce t4 p
     #print t1
     #check t2 p
+    #check t2 p 
     #check t3 _ p
-    #check t1 
+    #check t1
+    #check t7
     #check @t7.{0,0}
     #check t4
     #print t1

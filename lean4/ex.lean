@@ -1,6 +1,5 @@
--- trivial: proves (h : true)
--- False.elim: changes goal to false
 -- admit allGoals calc case cases change contradiction decide erewrite erw exact exists first focus funext generalize have induction injection injections intro intros match next open refine rename rewrite rfl rotateLeft rotateRight rw show simp simp_all skip solve split subst suffices trivial try unhygienic withReducible
+import Std.Data
 
 variable (α β ρ η μ : Prop)
 
@@ -174,3 +173,17 @@ example : (α ↔ β) → (β ↔ α) := by
     intro αiffβ
     rw [αiffβ]
     simp
+
+example : α → ¬ (¬ α) := by
+    intros α nα
+    apply nα
+    exact α
+
+example : (α → β) → (¬ β → ¬ α) := by
+    intros αβ nβ alpha
+    apply nβ
+    apply αβ
+    apply alpha
+    
+------------------------------------------------------------------------
+

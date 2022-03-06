@@ -1,6 +1,4 @@
-struct Zero
-    n::Int
-end
+struct Zero end
 
 struct Succ
     n::Function
@@ -9,6 +7,17 @@ end
 struct ℕ
     n::Union{Zero,Succ}
 end
+
+struct L{N}
+    v
+end
+
+L(v) = L{length(v)}(v)
+L(v...) = L{length(v)}(v)
+
+car(l::L{n}) where n = L(first(l.v))
+cdr(l::L{n}) where n = L(Base.tail(l.v))
+
 
 # ----------------------------------------------------------------
 
